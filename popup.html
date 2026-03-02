@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Focus Guard</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup">
+      <h1>Focus Guard</h1>
+
+      <section class="card">
+        <h2>Fully Blocked</h2>
+        <div class="row">
+          <input id="blockedInput" type="text" placeholder="instagram.com" />
+          <button id="addBlockedBtn" type="button">Add</button>
+        </div>
+        <ul id="blockedList" class="list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Time-Limited</h2>
+        <div class="row">
+          <input id="limitedInput" type="text" placeholder="reddit.com" />
+          <button id="addLimitedBtn" type="button">Add</button>
+        </div>
+        <ul id="limitedList" class="list"></ul>
+        <label for="limitSeconds">Limit (seconds)</label>
+        <input id="limitSeconds" type="number" min="1" step="1" />
+      </section>
+
+      <section class="card">
+        <h2>Images</h2>
+        <p class="hint">Paste Pinterest image URLs or upload files.</p>
+        <div class="row">
+          <input id="imageUrlInput" type="text" placeholder="https://...jpg" />
+          <button id="addImageUrlBtn" type="button">Add</button>
+        </div>
+        <ul id="imageUrlList" class="list"></ul>
+        <label for="imageUpload">Upload Images</label>
+        <input id="imageUpload" type="file" accept="image/*" multiple />
+        <div id="uploadedGrid" class="uploaded-grid"></div>
+      </section>
+
+      <button id="saveBtn" class="save" type="button">Save</button>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+
+    <script src="ui-common.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

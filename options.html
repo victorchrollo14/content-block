@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Focus Guard Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="hero">
+        <h1>Focus Guard</h1>
+        <p>Manage sites to block immediately and sites to block after time use.</p>
+      </header>
+
+      <section class="grid">
+        <article class="panel">
+          <h2>Fully Blocked Sites</h2>
+          <p class="panel-note">Opening these sites shows the quote screen instantly.</p>
+          <div class="input-row">
+            <input id="blockedInput" type="text" placeholder="instagram.com" />
+            <button id="addBlockedBtn" type="button">Add</button>
+          </div>
+          <ul id="blockedList" class="site-list" aria-label="Blocked sites"></ul>
+        </article>
+
+        <article class="panel">
+          <h2>Time-Limited Sites</h2>
+          <p class="panel-note">These are allowed until the timer expires.</p>
+          <div class="input-row">
+            <input id="limitedInput" type="text" placeholder="reddit.com" />
+            <button id="addLimitedBtn" type="button">Add</button>
+          </div>
+          <ul id="limitedList" class="site-list" aria-label="Limited sites"></ul>
+
+          <label for="limitSeconds" class="small-label">Time Limit (seconds)</label>
+          <input id="limitSeconds" type="number" min="1" step="1" />
+        </article>
+      </section>
+
+      <div class="actions">
+        <button id="saveBtn" type="button" class="save-btn">Save Settings</button>
+        <p id="status" role="status" aria-live="polite"></p>
+      </div>
+    </main>
+
+    <script src="ui-common.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>
