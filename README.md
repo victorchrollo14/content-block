@@ -18,13 +18,6 @@ Repository for the **Focus Guard** Chrome extension, located in `focus-guard-ext
 - Shows a motivational quote (and optional image) on block screen.
 - Lets users configure blocked/limited domains, limit seconds, quotes, and images.
 
-## Install Locally
-
-1. Open `chrome://extensions` in Chrome.
-2. Enable **Developer mode**.
-3. Click **Load unpacked**.
-4. Select: `/mnt/harddrive/build-for-self/BLOCK_CONTENT/focus-guard-extension`
-
 ## Quick Usage
 
 1. Click the Focus Guard extension icon.
