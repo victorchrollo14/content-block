@@ -12,7 +12,7 @@ const OVERLAY_ID = "focus-guard-overlay-root";
     enforceOverlay({
       title: "Site Blocked",
       quote: response.quote,
-      subtitle: "This site is fully blocked while Focus Guard is active.",
+      subtitle: "This site is blocked by Kaizen.",
       image: response.image
     });
     return;
@@ -20,12 +20,12 @@ const OVERLAY_ID = "focus-guard-overlay-root";
 
   if (response.mode === "limited-expired") {
     enforceOverlay({
-      title: "Time Limit Reached",
-      quote: response.quote,
-      subtitle: "You used your allowed time on this site.",
-      image: response.image
-    });
-    return;
+        title: "Time Limit Reached",
+        quote: response.quote,
+        subtitle: "Your time is up. Get back to work.",
+        image: response.image
+      });
+      return;
   }
 
   if (response.mode === "limited-active") {
@@ -33,7 +33,7 @@ const OVERLAY_ID = "focus-guard-overlay-root";
       enforceOverlay({
         title: "Time Limit Reached",
         quote: response.quote,
-        subtitle: "You used your allowed time on this site.",
+        subtitle: "Your time is up. Get back to work.",
         image: response.image
       });
     }, Math.max(0, Number(response.remainingMs) || 0));
@@ -41,6 +41,8 @@ const OVERLAY_ID = "focus-guard-overlay-root";
 })();
 
 function enforceOverlay({ title, quote, subtitle, image }) {
+  muteAllMedia();
+
   const create = () => {
     if (document.getElementById(OVERLAY_ID)) {
       return;
@@ -196,13 +198,13 @@ function enforceOverlay({ title, quote, subtitle, image }) {
           }
         }
       </style>
-      <div class="fg-backdrop" role="dialog" aria-modal="true" aria-label="Focus Guard message">
+      <div class="fg-backdrop" role="dialog" aria-modal="true" aria-label="Kaizen message">
         <div class="fg-shell">
           <aside class="fg-media" aria-hidden="true">
             ${
               image
                 ? `<img class="fg-image" src="${escapeHtml(image)}" alt="Motivation" />`
-                : '<div class="fg-image-fallback">Focus Guard</div>'
+                : '<div class="fg-image-fallback">Kaizen</div>'
             }
           </aside>
           <section class="fg-panel">
@@ -286,4 +288,22 @@ function escapeHtml(input) {
 
 function escapeCssUrl(input) {
   return String(input).replaceAll('"', '\\"');
+}
+
+function muteAllMedia() {
+  document.querySelectorAll("video, audio").forEach((el) => {
+    el.pause();
+    el.muted = true;
+    el.volume = 0;
+  });
+
+  Object.defineProperty(document, "visibilityState", {
+    get: () => "hidden",
+    configurable: true
+  });
+  document.hidden = true;
+
+  const style = document.createElement("style");
+  style.textContent = `video, audio { display: none !important; visibility: hidden !important; }`;
+  (document.head || document.documentElement).appendChild(style);
 }

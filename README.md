@@ -1,6 +1,6 @@
 # BLOCK_CONTENT
 
-Repository for the **Focus Guard** Chrome extension, located in `focus-guard-extension/`.
+Repository for the **Kaizen** Chrome extension, located in `focus-guard-extension/`.
 
 ## Project Layout
 
@@ -11,7 +11,7 @@ Repository for the **Focus Guard** Chrome extension, located in `focus-guard-ext
 - `focus-guard-extension/options.html|css|js` - Options page for broader settings management.
 - `focus-guard-extension/README.md` - Existing extension-specific readme.
 
-## What Focus Guard Does
+## What Kaizen Does
 
 - Fully blocks configured domains immediately.
 - Allows configured domains for a limited time, then blocks them.
@@ -20,7 +20,7 @@ Repository for the **Focus Guard** Chrome extension, located in `focus-guard-ext
 
 ## Quick Usage
 
-1. Click the Focus Guard extension icon.
+1. Click the Kaizen extension icon.
 2. Add domains to:
    - **Fully Blocked**
    - **Time-Limited**

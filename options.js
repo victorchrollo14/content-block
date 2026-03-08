@@ -2,12 +2,13 @@ const {
   DEFAULTS,
   normalizeDomain,
   normalizeDomainList
-} = window.FocusGuardCommon;
+} = window.KaizenCommon;
 
 const state = {
   blockedSites: [],
   limitedSites: []
 };
+
 
 const blockedInputEl = document.getElementById("blockedInput");
 const limitedInputEl = document.getElementById("limitedInput");

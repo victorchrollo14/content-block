@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Focus Guard",
+  "name": "Kaizen",
   "version": "1.0.0",
-  "description": "Block distracting sites and enforce time limits with motivational quotes.",
+  "description": "anything that distracts is evil, destroy evil",
   "permissions": ["storage", "tabs"],
   "host_permissions": ["<all_urls>"],
   "background": {
@@ -17,7 +17,11 @@
   ],
   "options_page": "options.html",
   "action": {
-    "default_title": "Focus Guard",
-    "default_popup": "popup.html"
+    "default_title": "Kaizen",
+    "default_popup": "popup.html",
+    "default_icon": "kaizen-logo.png"
+  },
+  "icons": {
+    "128": "kaizen-logo.png"
   }
 }

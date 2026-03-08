@@ -4,7 +4,7 @@ const {
   normalizeDomainList,
   normalizeImageList,
   normalizeImageUrl
-} = window.FocusGuardCommon;
+} = window.KaizenCommon;
 
 const state = {
   blockedSites: [],

@@ -1,6 +1,6 @@
 const DEFAULT_SETTINGS = {
-  blockedSites: ["instagram.com", "x.com"],
-  limitedSites: ["reddit.com"],
+  blockedSites: [],
+  limitedSites: [],
   limitSeconds: 30
 };
 const DEFAULT_LOCAL_SETTINGS = {

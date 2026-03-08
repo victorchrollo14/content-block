@@ -1,7 +1,7 @@
 (() => {
   const DEFAULTS = {
-    blockedSites: ["instagram.com", "x.com"],
-    limitedSites: ["reddit.com"],
+    blockedSites: [],
+    limitedSites: [],
     limitSeconds: 30
   };
 
@@ -51,7 +51,7 @@
     return value;
   }
 
-  window.FocusGuardCommon = {
+  window.KaizenCommon = {
     DEFAULTS,
     normalizeDomain,
     normalizeDomainList,
