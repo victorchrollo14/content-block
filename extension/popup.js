@@ -10,6 +10,8 @@ const quickBlockInputEl = document.getElementById('quickBlockInput');
 const quickBlockBtnEl = document.getElementById('quickBlockBtn');
 const statusEl = document.getElementById('status');
 
+const AUTH_COOKIE = 'insforge-session';
+
 void init();
 
 async function init() {
@@ -17,11 +19,29 @@ async function init() {
   setupEventListeners();
 }
 
+async function getSession() {
+  try {
+    const response = await fetch(`${BASE_URL}/auth/v1/session`, {
+      headers: {
+        'apikey': ANON_KEY
+      },
+      credentials: 'include'
+    });
+    
+    if (response.ok) {
+      return await response.json();
+    }
+  } catch (err) {
+    console.error('Session check failed:', err);
+  }
+  return null;
+}
+
 async function checkAuth() {
-  const user = await getCurrentUser();
+  const session = await getSession();
   
-  if (user) {
-    authStatusEl.textContent = `Signed in as ${user.email || 'User'}`;
+  if (session?.user) {
+    authStatusEl.textContent = `Signed in as ${session.user.email || 'User'}`;
     authBtnEl.textContent = 'Open Dashboard';
     authBtnEl.onclick = () => chrome.tabs.create({ url: BASE_URL });
     dashboardLinkEl.classList.remove('hidden');
@@ -46,24 +66,7 @@ function setupEventListeners() {
     if (e.key === 'Enter') addQuickBlock();
   });
   
-  setInterval(checkAuth, 30000);
-}
-
-async function getCurrentUser() {
-  try {
-    const response = await fetch(`${BASE_URL}/auth/v1/user`, {
-      headers: {
-        'apikey': ANON_KEY
-      }
-    });
-    
-    if (response.ok) {
-      return await response.json();
-    }
-  } catch (err) {
-    console.error('Get user error:', err);
-  }
-  return null;
+  setInterval(checkAuth, 10000);
 }
 
 async function addQuickBlock() {
@@ -71,8 +74,8 @@ async function addQuickBlock() {
   
   if (!domain) return;
   
-  const user = await getCurrentUser();
-  if (!user) {
+  const session = await getSession();
+  if (!session?.user) {
     showStatus('Please sign in on dashboard');
     return;
   }
@@ -85,12 +88,7 @@ async function addQuickBlock() {
         'Content-Type': 'application/json',
         'Prefer': 'return=minimal'
       },
-      body: JSON.stringify({
-        domain: domain,
-        block_type: 'full',
-        limit_seconds: 30,
-        is_active: true
-      })
+      credentials: 'include'
     });
     
     if (response.ok) {
