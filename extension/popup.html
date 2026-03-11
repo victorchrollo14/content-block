@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kaizen</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup">
+      <h1>Kaizen</h1>
+
+      <div id="auth-section">
+        <p id="auth-status" class="status-text">Checking...</p>
+        <button id="auth-btn" class="auth-btn">Sign In</button>
+      </div>
+
+      <div id="dashboard-link" class="hidden">
+        <a href="#" id="open-dashboard">Open Dashboard →</a>
+      </div>
+
+      <section class="card hidden" id="quick-add">
+        <h2>Quick Add Block</h2>
+        <div class="row">
+          <input id="quickBlockInput" type="text" placeholder="domain.com" />
+          <button id="quickBlockBtn" type="button">Block</button>
+        </div>
+      </section>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

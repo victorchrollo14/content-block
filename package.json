@@ -1,0 +1,13 @@
+{
+  "name": "kaizen",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter kaizen-web dev",
+    "build": "pnpm --filter kaizen-web build",
+    "build:extension": "echo 'Extension built'"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=18"
+  }
+}
